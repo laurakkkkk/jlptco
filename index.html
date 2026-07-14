@@ -27,9 +27,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(8, 8, 22, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -47,20 +47,20 @@
             background: #ffffff;
             max-width: 520px;
             width: 100%;
-            border-radius: 2.4rem;
-            padding: 2.8rem 2.2rem 2.2rem;
-            box-shadow: 0 50px 80px rgba(0,0,0,0.4);
-            text-align: center;
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            text-align: left;
             position: relative;
         }
         .card-box .emoji-big {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             display: block;
             margin-bottom: 0.3rem;
         }
         .card-box h2 {
             font-weight: 700;
-            font-size: 1.9rem;
+            font-size: 1.6rem;
             letter-spacing: -0.02em;
             color: #0c0c22;
             margin: 0.3rem 0 0.4rem;
@@ -68,54 +68,64 @@
         .card-box .sub {
             color: #4a4a62;
             font-weight: 400;
-            font-size: 1rem;
-            margin-bottom: 1.8rem;
-            padding: 0 0.3rem;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .card-box .sub strong {
+            color: #0c0c22;
         }
         .card-box .btn-accept {
-            background: #0c0c22;
+            background: #0a7c3e;
             color: white;
             border: none;
-            padding: 1rem 2rem;
+            padding: 0.9rem 2rem;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: 0.2s;
             width: 100%;
-            box-shadow: 0 8px 24px -6px rgba(12,12,34,0.45);
+            box-shadow: 0 4px 16px rgba(10,124,62,0.35);
         }
         .card-box .btn-accept:hover {
-            background: #24244a;
+            background: #0a6a35;
             transform: scale(1.01);
         }
         .card-footer-links {
-            margin-top: 1.6rem;
-            font-size: 0.85rem;
+            margin-top: 1.2rem;
+            font-size: 0.8rem;
             color: #6b6b82;
             display: flex;
             justify-content: center;
-            gap: 1.8rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
         }
         .card-footer-links .link-btn {
-            color: #0c0c22;
-            font-weight: 600;
+            color: #0a7c3e;
+            font-weight: 500;
             text-decoration: none;
-            border-bottom: 2px solid #0c0c22;
-            padding-bottom: 2px;
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            font-family: inherit;
             cursor: pointer;
             transition: 0.2s;
-            background: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            font-size: 0.85rem;
-            font-family: inherit;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid transparent;
         }
         .card-footer-links .link-btn:hover {
-            color: #4a4a6a;
-            border-bottom-color: #4a4a6a;
+            border-bottom-color: #0a7c3e;
+            color: #0a6a35;
+        }
+        .card-box .revoke-text {
+            font-size: 0.7rem;
+            color: #8a8aa2;
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #f0ede8;
         }
 
         /* ===== CONTENIDO PRINCIPAL ===== */
@@ -395,6 +405,52 @@
             margin: 1.5rem 0;
         }
 
+        /* ===== POLÍTICAS DE PRIVACIDAD (SECCIÓN OCULTA) ===== */
+        #politicas {
+            display: none;
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid #e8e4dd;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.03);
+        }
+        #politicas.active {
+            display: block;
+        }
+        #politicas h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+        #politicas h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.8rem;
+            margin-bottom: 0.6rem;
+            color: #0c0c22;
+        }
+        #politicas p {
+            color: #3a3a50;
+            margin-bottom: 1rem;
+        }
+        #politicas .back-btn {
+            background: #0c0c22;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: 0.2s;
+        }
+        #politicas .back-btn:hover {
+            background: #24244a;
+        }
+
         .footer-full {
             margin-top: 4rem;
             padding-top: 2.5rem;
@@ -462,13 +518,14 @@
                 width: 100%;
                 height: auto;
             }
+            #politicas { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================ -->
-    <!--  TARJETA DE BIENVENIDA (OVERLAY)                              -->
+    <!--  TARJETA DE BIENVENIDA (OVERLAY) - Estilo WhatsApp Business   -->
     <!-- ============================================================ -->
     <div id="welcomeOverlay" class="overlay-card">
         <div class="card-box">
@@ -476,15 +533,23 @@
             <h2>Finanzas para Conjuntos</h2>
             <p class="sub">
                 Información clara y útil para administrar tu comunidad.
-                <br /><strong>¿Aceptas nuestras políticas de privacidad?</strong>
+            </p>
+            <p class="sub" style="font-size:0.85rem; color:#6b6b82; margin-bottom:1.2rem;">
+                Para ofrecerte la mejor experiencia personalizada, utilizamos cookies y tecnologías similares que nos ayudan a mejorar nuestros servicios.
+                <br /><br />
+                Al hacer clic en <strong>Aceptar y continuar</strong> consientes el uso de cookies conforme a nuestra <strong>Política de Privacidad</strong>.
             </p>
 
-            <button id="acceptBtn" class="btn-accept">Aceptar y entrar</button>
+            <button id="acceptBtn" class="btn-accept">Aceptar y continuar</button>
 
             <div class="card-footer-links">
-                <button class="link-btn" data-link="privacidad">Políticas de privacidad</button>
+                <button class="link-btn" data-link="privacidad" id="showPoliticas">Políticas de privacidad</button>
                 <button class="link-btn" data-link="terminos">Términos de uso</button>
                 <button class="link-btn" data-link="contacto">Contacto</button>
+            </div>
+
+            <div class="revoke-text">
+                Puedes revocar tu consentimiento en cualquier momento desde la configuración del sitio.
             </div>
         </div>
     </div>
@@ -504,6 +569,7 @@
                 <button data-section="articulos">Artículos</button>
                 <button data-section="consejos">Consejos</button>
                 <button data-section="recursos">Recursos</button>
+                <button id="navPoliticas" style="color:#0a7c3e;">Privacidad</button>
             </nav>
         </header>
 
@@ -730,6 +796,33 @@
         </div>
 
         <!-- ============================================================ -->
+        <!--  SECCIÓN: POLÍTICAS DE PRIVACIDAD                            -->
+        <!-- ============================================================ -->
+        <div id="politicas">
+            <h2>🔒 Política de Privacidad</h2>
+            <p>
+                En <strong>Finanzas para Conjuntos</strong> valoramos tu privacidad y nos comprometemos a proteger tus datos personales. Esta política explica cómo recopilamos, usamos y protegemos tu información cuando visitas nuestro sitio web.
+            </p>
+
+            <h3>Información que recopilamos</h3>
+            <p>
+                Podemos recopilar información personal como tu nombre, correo electrónico y número de teléfono cuando te registras o contactas con nosotros. Además, recopilamos información no personal como tu dirección IP, tipo de navegador, proveedor de servicios de internet (ISP), sello de fecha y hora, páginas de referencia o salida, y posiblemente el número de clics.
+            </p>
+
+            <h3>Políticas de Privacidad de Terceros</h3>
+            <p>
+                La Política de Privacidad de <strong>Finanzas para Conjuntos</strong> no se aplica a otros anunciantes o sitios web. Por lo tanto, te aconsejamos que consultes las respectivas Políticas de Privacidad de estos servidores de anuncios de terceros para obtener información más detallada. Puede incluir sus prácticas e instrucciones sobre cómo optar por no participar en ciertas opciones.
+            </p>
+
+            <h3>Consentimiento</h3>
+            <p>
+                Al utilizar nuestro sitio web, por la presente aceptas nuestra Política de Privacidad y estás de acuerdo con sus términos y condiciones.
+            </p>
+
+            <button class="back-btn" id="backFromPoliticas">← Volver al inicio</button>
+        </div>
+
+        <!-- ============================================================ -->
         <!--  FOOTER                                                       -->
         <!-- ============================================================ -->
         <footer class="footer-full">
@@ -761,7 +854,7 @@
             <div class="footer-bottom">
                 <span>© 2026 Finanzas para Conjuntos · Todos los derechos reservados</span>
                 <span>
-                    <a href="#">Privacidad</a> · 
+                    <a href="#" id="footerPoliticas">Privacidad</a> · 
                     <a href="#">Términos</a> · 
                     <a href="#">Cookies</a> · 
                     <a href="#">Mapa del sitio</a>
@@ -795,6 +888,7 @@
 
             acceptBtn.addEventListener('click', acceptCookies);
 
+            // Los botones de la tarjeta (Políticas, Términos, Contacto) también aceptan
             const linkBtns = document.querySelectorAll('.link-btn');
             linkBtns.forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
@@ -806,19 +900,22 @@
             checkAcceptance();
 
             // ===== NAVEGACIÓN POR PESTAÑAS =====
-            const navButtons = document.querySelectorAll('.nav-menu button');
+            const navButtons = document.querySelectorAll('.nav-menu button:not(#navPoliticas)');
             const sections = {
                 inicio: document.getElementById('inicio'),
                 articulos: document.getElementById('articulos'),
                 consejos: document.getElementById('consejos'),
                 recursos: document.getElementById('recursos')
             };
+            const politicasSection = document.getElementById('politicas');
 
             function showSection(sectionId) {
-                // Ocultar todas las secciones
+                // Ocultar secciones principales
                 Object.keys(sections).forEach(function(key) {
                     sections[key].classList.remove('active');
                 });
+                // Ocultar políticas
+                politicasSection.classList.remove('active');
 
                 // Mostrar la seleccionada
                 if (sections[sectionId]) {
@@ -834,12 +931,60 @@
                 });
             }
 
+            // Navegación por pestañas
             navButtons.forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     const sectionId = this.dataset.section;
                     showSection(sectionId);
                 });
             });
+
+            // ===== MOSTRAR POLÍTICAS DE PRIVACIDAD =====
+            function showPoliticas() {
+                // Ocultar todas las secciones principales
+                Object.keys(sections).forEach(function(key) {
+                    sections[key].classList.remove('active');
+                });
+                // Mostrar políticas
+                politicasSection.classList.add('active');
+                // Quitar active de todos los botones del menú
+                navButtons.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+            }
+
+            // Botón "Políticas de privacidad" en la tarjeta (ya acepta y cierra, pero además mostramos políticas)
+            const showPoliticasBtn = document.getElementById('showPoliticas');
+            showPoliticasBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Si el overlay está visible, primero aceptamos (guardamos en localStorage y cerramos)
+                if (!overlay.classList.contains('hidden')) {
+                    acceptCookies();
+                }
+                // Luego mostramos la sección de políticas
+                showPoliticas();
+            });
+
+            // Botón "Privacidad" en el menú superior
+            document.getElementById('navPoliticas').addEventListener('click', function() {
+                showPoliticas();
+            });
+
+            // Botón "Privacidad" en el footer
+            document.getElementById('footerPoliticas').addEventListener('click', function(e) {
+                e.preventDefault();
+                showPoliticas();
+            });
+
+            // Botón "Volver al inicio" desde políticas
+            document.getElementById('backFromPoliticas').addEventListener('click', function() {
+                showSection('inicio');
+            });
+
+            // Mostrar inicio por defecto si no hay sección activa
+            if (!document.querySelector('.section-content.active')) {
+                showSection('inicio');
+            }
         })();
     </script>
 
