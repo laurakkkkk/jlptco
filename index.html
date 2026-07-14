@@ -76,6 +76,24 @@
         .card-box .sub strong {
             color: #0c0c22;
         }
+        .card-box .sub .politicas-link {
+            color: #0a7c3e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            cursor: pointer;
+            transition: 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            font-size: 0.95rem;
+            font-family: inherit;
+            padding: 0;
+        }
+        .card-box .sub .politicas-link:hover {
+            border-bottom-color: #0a7c3e;
+        }
         .card-box .btn-accept {
             background: #0a7c3e;
             color: white;
@@ -537,7 +555,7 @@
             <p class="sub" style="font-size:0.85rem; color:#6b6b82; margin-bottom:1.2rem;">
                 Para ofrecerte la mejor experiencia personalizada, utilizamos cookies y tecnologías similares que nos ayudan a mejorar nuestros servicios.
                 <br /><br />
-                Al hacer clic en <strong>Aceptar y continuar</strong> consientes el uso de cookies conforme a nuestra <strong>Política de Privacidad</strong>.
+                Al hacer clic en <strong>Aceptar y continuar</strong> consientes el uso de cookies conforme a nuestra <button class="politicas-link" id="inlinePoliticas">Política de Privacidad</button>.
             </p>
 
             <button id="acceptBtn" class="btn-accept">Aceptar y continuar</button>
@@ -953,15 +971,21 @@
                 });
             }
 
-            // Botón "Políticas de privacidad" en la tarjeta (ya acepta y cierra, pero además mostramos políticas)
-            const showPoliticasBtn = document.getElementById('showPoliticas');
-            showPoliticasBtn.addEventListener('click', function(e) {
+            // Botón "Políticas de privacidad" en la tarjeta
+            document.getElementById('showPoliticas').addEventListener('click', function(e) {
                 e.preventDefault();
-                // Si el overlay está visible, primero aceptamos (guardamos en localStorage y cerramos)
                 if (!overlay.classList.contains('hidden')) {
                     acceptCookies();
                 }
-                // Luego mostramos la sección de políticas
+                showPoliticas();
+            });
+
+            // Enlace "Política de Privacidad" dentro del texto (inline)
+            document.getElementById('inlinePoliticas').addEventListener('click', function(e) {
+                e.preventDefault();
+                if (!overlay.classList.contains('hidden')) {
+                    acceptCookies();
+                }
                 showPoliticas();
             });
 
