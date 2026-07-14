@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -159,12 +158,38 @@
             font-weight: 500;
             color: #3a3a52;
         }
-        .nav-menu a {
-            text-decoration: none;
-            color: inherit;
+        .nav-menu button {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #3a3a52;
+            cursor: pointer;
             transition: 0.15s;
+            padding: 0.3rem 0;
         }
-        .nav-menu a:hover { color: #0c0c22; }
+        .nav-menu button:hover {
+            color: #0c0c22;
+        }
+        .nav-menu button.active {
+            color: #0c0c22;
+            border-bottom: 3px solid #0c0c22;
+        }
+
+        /* ===== SECCIONES DE CONTENIDO ===== */
+        .section-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
         .hero-section {
             margin: 2.5rem 0 3.5rem;
@@ -216,12 +241,6 @@
             background: #f0ede8;
             border-radius: 20px;
             margin-bottom: 0.5rem;
-        }
-        .ad-spot img {
-            width: 100%;
-            height: auto;
-            border-radius: 0.8rem;
-            display: block;
         }
         .ad-spot .ad-content {
             display: flex;
@@ -278,6 +297,61 @@
         .grid-articles .item p {
             color: #50506a;
             font-size: 0.95rem;
+        }
+
+        /* ===== ESTILOS PARA ARTÍCULOS, CONSEJOS Y RECURSOS ===== */
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 2rem 0 1.5rem;
+            letter-spacing: -0.5px;
+        }
+        .page-description {
+            font-size: 1.1rem;
+            color: #4a4a62;
+            margin-bottom: 2rem;
+        }
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-list .card-item {
+            background: white;
+            padding: 1.8rem 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid #eeeae3;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: 0.2s;
+        }
+        .card-list .card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .card-list .card-item .emoji-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .card-list .card-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .card-list .card-item p {
+            color: #5a5a72;
+            font-size: 0.95rem;
+        }
+        .card-list .card-item .tag {
+            display: inline-block;
+            background: #f0ede8;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.6rem;
+            color: #3a3a52;
         }
 
         .blog-section {
@@ -426,142 +500,238 @@
                 Finanzas <span>Blog</span>
             </div>
             <nav class="nav-menu">
-                <a href="#">Inicio</a>
-                <a href="#">Artículos</a>
-                <a href="#">Consejos</a>
-                <a href="#">Recursos</a>
+                <button class="active" data-section="inicio">Inicio</button>
+                <button data-section="articulos">Artículos</button>
+                <button data-section="consejos">Consejos</button>
+                <button data-section="recursos">Recursos</button>
             </nav>
         </header>
 
-        <section class="hero-section">
-            <div class="hero-text">
-                <h1>Finanzas claras para <br />comunidades organizadas</h1>
-                <p class="tagline">
-                    Aprende a gestionar los recursos de tu conjunto residencial con transparencia y eficiencia.
-                </p>
-            </div>
-            <div class="hero-emoji">
-                🏦
-            </div>
-        </section>
+        <!-- ============================================================ -->
+        <!--  SECCIÓN: INICIO                                              -->
+        <!-- ============================================================ -->
+        <div id="inicio" class="section-content active">
 
-        <div class="ad-spot">
-            <span class="ad-label">📢 Patrocinado</span>
-            <div class="ad-content">
-                <div class="ad-text">
-                    <h4>🏢 Administra tu conjunto con SoftwarePro</h4>
-                    <p>La herramienta #1 para gestionar finanzas, pagos y comunicaciones. ¡Prueba gratis!</p>
+            <section class="hero-section">
+                <div class="hero-text">
+                    <h1>Finanzas claras para <br />comunidades organizadas</h1>
+                    <p class="tagline">
+                        Aprende a gestionar los recursos de tu conjunto residencial con transparencia y eficiencia.
+                    </p>
                 </div>
-                <div class="ad-img">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=200&h=200&fit=crop&crop=center" alt="Edificio moderno" loading="lazy" />
+                <div class="hero-emoji">🏦</div>
+            </section>
+
+            <div class="ad-spot">
+                <span class="ad-label">📢 Patrocinado</span>
+                <div class="ad-content">
+                    <div class="ad-text">
+                        <h4>🏢 Administra tu conjunto con SoftwarePro</h4>
+                        <p>La herramienta #1 para gestionar finanzas, pagos y comunicaciones. ¡Prueba gratis!</p>
+                    </div>
+                    <div class="ad-img">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=200&h=200&fit=crop&crop=center" alt="Edificio moderno" loading="lazy" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="grid-articles">
-            <div class="item">
-                <span class="icon-emoji">📊</span>
-                <h3>Presupuesto comunitario</h3>
-                <p>Planifica ingresos y gastos anuales con herramientas simples y efectivas.</p>
-            </div>
-            <div class="item">
-                <span class="icon-emoji">💳</span>
-                <h3>Control de pagos</h3>
-                <p>Monitorea cuotas al día y morosidad de forma transparente.</p>
-            </div>
-            <div class="item">
-                <span class="icon-emoji">📋</span>
-                <h3>Reportes automáticos</h3>
-                <p>Genera informes mensuales para la asamblea de propietarios.</p>
-            </div>
-            <div class="item">
-                <span class="icon-emoji">🔍</span>
-                <h3>Transparencia total</h3>
-                <p>Todos los movimientos financieros disponibles para la comunidad.</p>
-            </div>
-        </div>
-
-        <section class="blog-section">
-            <h2>📘 Guía práctica: Finanzas para conjuntos residenciales</h2>
-
-            <p>
-                Administrar un conjunto residencial implica mucho más que mantener áreas comunes. 
-                La gestión financiera es el pilar que garantiza la sostenibilidad y calidad de vida 
-                de todos los residentes. En este artículo, exploramos las mejores prácticas para 
-                llevar unas finanzas claras, organizadas y transparentes.
-            </p>
-
-            <h3>1. ¿Por qué es importante un presupuesto anual?</h3>
-            <p>
-                El presupuesto anual es la hoja de ruta financiera del conjunto. Permite prever 
-                ingresos (cuotas ordinarias y extraordinarias) y gastos (mantenimiento, servicios 
-                públicos, seguros, impuestos). Contar con un presupuesto aprobado por la asamblea 
-                da certeza a todos los propietarios.
-            </p>
-            <div class="highlight-box">
-                <strong>💡 Consejo:</strong> Revisa el presupuesto trimestralmente y ajusta si es 
-                necesario. La flexibilidad es clave ante imprevistos.
-            </div>
-
-            <h3>2. Control de cuotas y morosidad</h3>
-            <p>
-                La morosidad es uno de los mayores desafíos. Un sistema de control de pagos 
-                permite identificar rápidamente a los morosos y aplicar los mecanismos de cobro 
-                establecidos en el reglamento interno. La comunicación temprana y el diálogo 
-                suelen ser más efectivos que las sanciones inmediatas.
-            </p>
-            <ul>
-                <li><strong>Registro diario:</strong> Mantén actualizado el estado de cuentas de cada propietario.</li>
-                <li><strong>Recordatorios automáticos:</strong> Envía notificaciones antes del vencimiento.</li>
-                <li><strong>Planes de pago:</strong> Ofrece facilidades para morosos con dificultades temporales.</li>
-            </ul>
-
-            <h3>3. Gastos comunes: ¿cómo optimizarlos?</h3>
-            <p>
-                Los gastos comunes representan una parte significativa del presupuesto. Para optimizarlos:
-            </p>
-            <ul>
-                <li><strong>Eficiencia energética:</strong> Iluminación LED y sensores de movimiento.</li>
-                <li><strong>Mantenimiento preventivo:</strong> Evita reparaciones costosas con revisiones periódicas.</li>
-                <li><strong>Negociación colectiva:</strong> Contrata servicios (jardinería, limpieza, seguridad) con proveedores confiables y precios competitivos.</li>
-            </ul>
-
-            <h3>4. Transparencia y comunicación</h3>
-            <p>
-                La transparencia genera confianza. Publica periódicamente los estados financieros 
-                en un lugar visible (físico o digital). Realiza asambleas informativas donde los 
-                propietarios puedan preguntar y entender el manejo de los recursos.
-            </p>
-            <div class="highlight-box">
-                <strong>📌 Recomendación:</strong> Usa un dashboard simple que muestre ingresos, 
-                gastos y saldo en tiempo real. La tecnología puede ser tu aliada.
-            </div>
-
-            <h3>5. Herramientas tecnológicas para la gestión</h3>
-            <p>
-                Existen aplicaciones y plataformas que facilitan la administración financiera de 
-                conjuntos. Desde hojas de cálculo colaborativas hasta software especializado, 
-                elige la que mejor se adapte al tamaño y necesidades de tu comunidad.
-            </p>
-            <p>
-                Recuerda: una buena administración financiera no solo evita problemas, sino que 
-                también aumenta el valor de las propiedades y la calidad de vida de los residentes.
-            </p>
-        </section>
-
-        <div class="ad-spot">
-            <span class="ad-label">📱 Recomendado</span>
-            <div class="ad-content">
-                <div class="ad-text">
-                    <h4>📊 Finanzas al día con ContaConjuntos</h4>
-                    <p>La app que simplifica la contabilidad de tu edificio. Descárgala gratis.</p>
+            <div class="grid-articles">
+                <div class="item">
+                    <span class="icon-emoji">📊</span>
+                    <h3>Presupuesto comunitario</h3>
+                    <p>Planifica ingresos y gastos anuales con herramientas simples y efectivas.</p>
                 </div>
-                <div class="ad-img">
-                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&h=200&fit=crop&crop=center" alt="Finanzas y contabilidad" loading="lazy" />
+                <div class="item">
+                    <span class="icon-emoji">💳</span>
+                    <h3>Control de pagos</h3>
+                    <p>Monitorea cuotas al día y morosidad de forma transparente.</p>
+                </div>
+                <div class="item">
+                    <span class="icon-emoji">📋</span>
+                    <h3>Reportes automáticos</h3>
+                    <p>Genera informes mensuales para la asamblea de propietarios.</p>
+                </div>
+                <div class="item">
+                    <span class="icon-emoji">🔍</span>
+                    <h3>Transparencia total</h3>
+                    <p>Todos los movimientos financieros disponibles para la comunidad.</p>
+                </div>
+            </div>
+
+            <section class="blog-section">
+                <h2>📘 Guía práctica: Finanzas para conjuntos residenciales</h2>
+                <p>Administrar un conjunto residencial implica mucho más que mantener áreas comunes. La gestión financiera es el pilar que garantiza la sostenibilidad y calidad de vida de todos los residentes.</p>
+                <h3>1. ¿Por qué es importante un presupuesto anual?</h3>
+                <p>El presupuesto anual es la hoja de ruta financiera del conjunto. Permite prever ingresos y gastos.</p>
+                <div class="highlight-box"><strong>💡 Consejo:</strong> Revisa el presupuesto trimestralmente y ajusta si es necesario.</div>
+                <h3>2. Control de cuotas y morosidad</h3>
+                <p>La morosidad es uno de los mayores desafíos. Un sistema de control de pagos permite identificar rápidamente a los morosos.</p>
+                <ul>
+                    <li><strong>Registro diario:</strong> Mantén actualizado el estado de cuentas.</li>
+                    <li><strong>Recordatorios automáticos:</strong> Envía notificaciones antes del vencimiento.</li>
+                </ul>
+                <h3>3. Gastos comunes: ¿cómo optimizarlos?</h3>
+                <ul>
+                    <li><strong>Eficiencia energética:</strong> Iluminación LED y sensores de movimiento.</li>
+                    <li><strong>Mantenimiento preventivo:</strong> Evita reparaciones costosas.</li>
+                </ul>
+                <div class="highlight-box"><strong>📌 Recomendación:</strong> Usa un dashboard simple que muestre ingresos, gastos y saldo en tiempo real.</div>
+                <h3>4. Herramientas tecnológicas para la gestión</h3>
+                <p>Existen aplicaciones y plataformas que facilitan la administración financiera de conjuntos.</p>
+            </section>
+
+            <div class="ad-spot">
+                <span class="ad-label">📱 Recomendado</span>
+                <div class="ad-content">
+                    <div class="ad-text">
+                        <h4>📊 Finanzas al día con ContaConjuntos</h4>
+                        <p>La app que simplifica la contabilidad de tu edificio. Descárgala gratis.</p>
+                    </div>
+                    <div class="ad-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&h=200&fit=crop&crop=center" alt="Finanzas y contabilidad" loading="lazy" />
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- ============================================================ -->
+        <!--  SECCIÓN: ARTÍCULOS                                           -->
+        <!-- ============================================================ -->
+        <div id="articulos" class="section-content">
+            <h2 class="page-title">📚 Artículos destacados</h2>
+            <p class="page-description">Explora nuestros artículos sobre administración financiera para conjuntos residenciales.</p>
+
+            <div class="card-list">
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Cómo crear un presupuesto anual efectivo</h4>
+                    <p>Aprende a planificar ingresos y gastos para mantener las finanzas de tu conjunto en orden.</p>
+                    <span class="tag">📊 Finanzas</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Estrategias para reducir la morosidad</h4>
+                    <p>Descubre métodos efectivos para cobrar cuotas atrasadas y mantener la liquidez.</p>
+                    <span class="tag">💳 Cobros</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Optimización de gastos comunes</h4>
+                    <p>Consejos prácticos para reducir costos sin afectar la calidad de los servicios.</p>
+                    <span class="tag">💰 Ahorro</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Transparencia financiera: cómo generar confianza</h4>
+                    <p>La clave para una comunidad unida es la claridad en el manejo de los recursos.</p>
+                    <span class="tag">🔍 Transparencia</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Herramientas digitales para administradores</h4>
+                    <p>Las mejores apps y software para gestionar tu conjunto desde el celular.</p>
+                    <span class="tag">📱 Tecnología</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Cómo realizar una asamblea financiera exitosa</h4>
+                    <p>Prepara y presenta informes claros que todos los propietarios entiendan.</p>
+                    <span class="tag">🏛️ Asambleas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!--  SECCIÓN: CONSEJOS                                            -->
+        <!-- ============================================================ -->
+        <div id="consejos" class="section-content">
+            <h2 class="page-title">💡 Consejos prácticos</h2>
+            <p class="page-description">Tips rápidos y efectivos para mejorar la administración financiera de tu comunidad.</p>
+
+            <div class="card-list">
+                <div class="card-item">
+                    <span class="emoji-icon">✅</span>
+                    <h4>Revisa tus gastos fijos cada 6 meses</h4>
+                    <p>Contratos de servicios como vigilancia, aseo y mantenimiento pueden renegociarse para obtener mejores precios.</p>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">✅</span>
+                    <h4>Fondos de reserva: ahorra para imprevistos</h4>
+                    <p>Destina un porcentaje de las cuotas a un fondo para emergencias o reparaciones mayores.</p>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">✅</span>
+                    <h4>Comunica con claridad</h4>
+                    <p>Envía informes financieros claros y resumidos a todos los propietarios. La información transparente evita desconfianza.</p>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">✅</span>
+                    <h4>Digitaliza tus procesos</h4>
+                    <p>Usa herramientas en línea para recibir pagos, enviar notificaciones y mantener registros actualizados.</p>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">✅</span>
+                    <h4>Capacita al comité de finanzas</h4>
+                    <p>Asegúrate de que los miembros del comité entiendan los conceptos básicos de contabilidad y presupuestos.</p>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">✅</span>
+                    <h4>Auditorías internas periódicas</h4>
+                    <p>Revisa los movimientos financieros cada trimestre para detectar inconsistencias a tiempo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!--  SECCIÓN: RECURSOS                                            -->
+        <!-- ============================================================ -->
+        <div id="recursos" class="section-content">
+            <h2 class="page-title">📎 Recursos útiles</h2>
+            <p class="page-description">Plantillas, guías y herramientas descargables para facilitar la administración de tu conjunto.</p>
+
+            <div class="card-list">
+                <div class="card-item">
+                    <span class="emoji-icon">📊</span>
+                    <h4>Plantilla de presupuesto anual (Excel)</h4>
+                    <p>Formato listo para usar con categorías de ingresos y gastos. Descarga y personaliza.</p>
+                    <span class="tag">⬇️ Descargar</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📋</span>
+                    <h4>Formato de control de pagos</h4>
+                    <p>Registro de cuotas al día y morosos. Incluye alertas de vencimiento.</p>
+                    <span class="tag">⬇️ Descargar</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📘</span>
+                    <h4>Guía: Cómo administrar un conjunto</h4>
+                    <p>Manual completo con buenas prácticas, normatividad colombiana y consejos.</p>
+                    <span class="tag">📄 PDF</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📱</span>
+                    <h4>App recomendada: ContaConjuntos</h4>
+                    <p>Descarga la aplicación móvil para gestionar pagos, comunicados y finanzas desde tu celular.</p>
+                    <span class="tag">🔗 Enlace</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📹</span>
+                    <h4>Video tutorial: Presupuestos paso a paso</h4>
+                    <p>Explicación visual de cómo construir y aprobar un presupuesto anual.</p>
+                    <span class="tag">▶️ Ver</span>
+                </div>
+                <div class="card-item">
+                    <span class="emoji-icon">📄</span>
+                    <h4>Modelo de acta de asamblea</h4>
+                    <p>Formato para registrar acuerdos financieros y aprobaciones de la asamblea.</p>
+                    <span class="tag">⬇️ Descargar</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!--  FOOTER                                                       -->
+        <!-- ============================================================ -->
         <footer class="footer-full">
             <div class="col">
                 <h4>🏢 Finanzas & Conjuntos</h4>
@@ -601,10 +771,11 @@
     </div>
 
     <!-- ============================================================ -->
-    <!--  SCRIPT MODIFICADO: los 3 botones hacen lo mismo que Aceptar  -->
+    <!--  SCRIPT                                                       -->
     <!-- ============================================================ -->
     <script>
         (function() {
+            // ===== OVERLAY DE BIENVENIDA =====
             const overlay = document.getElementById('welcomeOverlay');
             const acceptBtn = document.getElementById('acceptBtn');
 
@@ -622,10 +793,8 @@
                 overlay.classList.add('hidden');
             }
 
-            // Botón "Aceptar y entrar"
             acceptBtn.addEventListener('click', acceptCookies);
 
-            // Los tres botones del footer ahora hacen lo mismo que "Aceptar y entrar"
             const linkBtns = document.querySelectorAll('.link-btn');
             linkBtns.forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
@@ -635,9 +804,44 @@
             });
 
             checkAcceptance();
+
+            // ===== NAVEGACIÓN POR PESTAÑAS =====
+            const navButtons = document.querySelectorAll('.nav-menu button');
+            const sections = {
+                inicio: document.getElementById('inicio'),
+                articulos: document.getElementById('articulos'),
+                consejos: document.getElementById('consejos'),
+                recursos: document.getElementById('recursos')
+            };
+
+            function showSection(sectionId) {
+                // Ocultar todas las secciones
+                Object.keys(sections).forEach(function(key) {
+                    sections[key].classList.remove('active');
+                });
+
+                // Mostrar la seleccionada
+                if (sections[sectionId]) {
+                    sections[sectionId].classList.add('active');
+                }
+
+                // Actualizar clase active en botones
+                navButtons.forEach(function(btn) {
+                    btn.classList.remove('active');
+                    if (btn.dataset.section === sectionId) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            navButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    showSection(sectionId);
+                });
+            });
         })();
     </script>
 
 </body>
 </html>
-```
